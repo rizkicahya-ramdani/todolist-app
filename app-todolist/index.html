@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
+
+    <!-- My CSS -->
+    <link rel="stylesheet" href="style.css" />
+
+    <title>TODO List App</title>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1><strong>TODO List</strong></h1>
+        <p>Mau ngapain nih?</p>
+      </div>
+    </header>
+
+    <div class="content">
+      <form action="#">
+        <p>Masukkan List dibawah ini :</p>
+        <input type="text" id="new_text" />
+        <button onclick="add()">Add</button>
+      </form>
+
+      <ul id="todo"></ul>
+    </div>
+
+    <style>
+      .done {
+        text-decoration: line-through;
+      }
+    </style>
+
+    <script>
+      const todo = document.getElementById('todo');
+
+      function add() {
+        let newText = document.getElementById('new_text');
+
+        let newTodo = "<li><span onclick='toggle(this)'>" + newText.value + '</span>' + "<span onclick='removeItem(this)'> [x] </span>" + '</li>';
+
+        todo.insertAdjacentHTML('afterbegin', newTodo);
+
+        newText.value = '';
+      }
+
+      function toggle(el) {
+        el.classList.toggle('done');
+      }
+
+      function removeItem(el) {
+        el.parentElement.remove();
+      }
+    </script>
+  </body>
+</html>
